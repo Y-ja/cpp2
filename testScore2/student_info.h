@@ -1,33 +1,24 @@
-// student_info.h
 #ifndef STUDENT_INFO_H
 #define STUDENT_INFO_H
 
 #include <iostream>
-#include <vector>
 #include <string>
 
-// Student_info 구조체 정의
-struct Student_info {
-    std::string name;
-    double midterm;
-    double finalterm;
-    std::vector<double> homeworks;
-
-    // 학생 정보를 설정하는 함수
+class Student_info {
+public:
+    // 학생 정보 읽기
     bool read(std::istream& in);
-
-    // 최종 점수 계산 함수
-    double final_grade() const;
-
-    // 학생 정보를 출력하는 함수
+    // 학생 정보 출력
     void print_info() const;
 
 private:
-    // 과제 점수 입력 함수
-    static std::istream& read_hw(std::istream& in, std::vector<double>& homeworks);
+    std::string name;
+    double midterm;
+    double finalterm;
+    double final_score;
 
-    // 중앙값 계산 함수
-    static double median(const std::vector<double>& vec);
+    // 최종 점수 계산
+    double calculate_final_score(double midterm, double finalterm, double homework);
 };
 
 #endif // STUDENT_INFO_H
